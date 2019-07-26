@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{Component} from 'react';
 import './App.css';
+import Stories from "./components/Stories/Stories";
+import StoriesForm from "./components/Stories/StoriesForm";
+import { 
+  Container, 
+  Row, 
+  Col,
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+} from 'reactstrap';
+
+class App extends Component {
+  render(){
+      return (
+        <Container
+         className="App"
+         >
+        <Row>
+          <Col>
+            <h1>Bountiful App</h1>
+              <div>
+                <Stories/>
+                <StoriesForm/>
+              </div>
+          </Col>
+        </Row>
+      </Container>
+    );
+}
 }
 
 export default App;
