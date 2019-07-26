@@ -16,6 +16,7 @@ export const getStories = () => dispatch => {
 
     .catch(err => {
       dispatch({type: FETCHING_FAILED, payload: err})
+      console.log(err)
     })
 }
 
