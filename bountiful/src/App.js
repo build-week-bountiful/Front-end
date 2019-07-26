@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 import './App.css';
+import Stories from "./components/Stories/Stories";
 import StoriesForm from "./components/Stories/StoriesForm";
 import { 
   Container, 
@@ -18,6 +19,7 @@ class App extends Component {
           <Col>
             <h1>Bountiful App</h1>
               <div>
+                <Stories/>
                 <StoriesForm/>
               </div>
           </Col>

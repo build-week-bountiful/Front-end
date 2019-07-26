@@ -11,12 +11,13 @@ export const getStories = () => dispatch => {
     .get("http://coordinator-storytelling.herokuapp.com/stories/all")
     // console.log()
     .then(res => {
+      console.log("get", res)
       dispatch({ type: FETCHING_SUCCESS, payload: res.data})
     })
 
     .catch(err => {
-      dispatch({type: FETCHING_FAILED, payload: err})
       console.log(err)
+      dispatch({type: FETCHING_FAILED, payload: err})
     })
 }
 
@@ -25,15 +26,34 @@ export const CREATING_STORIES = "CREATING_STORIES"
 export const CREATING_STORIES_SUCCESS = "CREATING_STORIES_SUCCESS"
 export const CREATING_STORIES_FAILURE = "CREATING_STORIES_FAILURE"
 
-export const createStories = (newStories) => dispatch => {
-  dispatch({type: CREATING_STORIES});
+export const createStories = (newStories, title, country, description, date) => dispatch => {
+  dispatch({type: CREATING_STORIES, payload: {
+      title,
+      country,
+      description,
+      date,
+  }});
 
   return axios
   .post("http://coordinator-storytelling.herokuapp.com/createnewuser", newStories)
   .then(res=> {
+    console.log("then", res)
     dispatch({type: CREATING_STORIES_SUCCESS, payload: res.data})
   })
   .catch(err =>{
+    console.log("catch", err)
     dispatch({type: CREATING_STORIES_FAILURE, payload: err})
   })
 }
+
+// export function createStories(title, country, description, date){
+//   return{
+//     type: CREATING_STORIES,
+//     payload: {
+//       title,
+//       country,
+//       description,
+//       date,
+//     }
+//   }
+// }

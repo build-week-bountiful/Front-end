@@ -1,10 +1,10 @@
 import React from "react";
-import {gettingStories} from "../Actions/index";
+import {getStories} from "../Actions/index";
 import {connect} from "react-redux";
 
 class Stories extends React.Component{
   componentDidMount(){
-    this.props.gettingStories();
+    this.props.getStories();
   }
 
   render(){
@@ -24,4 +24,4 @@ const mapStateProps = state => {
   }
 }
 
-export default connect (mapStateProps, {gettingStories})(Stories);
+export default connect (mapStateProps, {getStories})(Stories);

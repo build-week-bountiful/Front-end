@@ -91,7 +91,7 @@ class StoriesForm extends React.Component{
 
           <Button 
             color="warning"
-          >Add To Stories</Button>{" "}
+          >Add To Stories</Button>
         </Form>
       </div>
     )
