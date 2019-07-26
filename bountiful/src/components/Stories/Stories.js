@@ -1,17 +1,37 @@
 import React from "react";
 import {getStories} from "../Actions/index";
 import {connect} from "react-redux";
+import { 
+  Container, 
+  Row, 
+  Col,
 
+} from 'reactstrap';
 class Stories extends React.Component{
+  constructor(props){
+    super()
+  }
+
   componentDidMount(){
     this.props.getStories();
   }
 
   render(){
     return(
-      <div className="storiesContainer">
-        <h2>Stories</h2>
-      </div>
+      <Container className="storiesContainer">
+      <Row>
+        <Col>
+          <h2>Stories</h2>
+        </Col>
+      </Row>
+      <Row>
+        <Col>{stories.title}</Col>
+        <Col>{stories.date}</Col>
+        <Col>{stories.country}</Col>
+        <Col>{stories.description}</Col>
+      </Row>
+        
+      </Container>
     )
   }
 }
