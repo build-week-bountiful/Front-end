@@ -9,12 +9,19 @@ import thunk from "redux-thunk";
 import logger from "redux-logger";
 import {Provider} from "react-redux";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+  BrowserRouter,
+  // Link,
+  // Route,
+} from "react-router-dom"
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 
 ReactDOM.render(
 <Provider store={store}>
+<BrowserRouter>
 <App />
+</BrowserRouter>
 </Provider>, 
 document.getElementById('root'));
 
