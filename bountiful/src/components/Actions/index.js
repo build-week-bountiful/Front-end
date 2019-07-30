@@ -36,7 +36,7 @@ export const createStories = (newStories, storiesid, title, country, description
   }});
 
   return axios
-  .post("http://coordinator-storytelling.herokuapp.com/createnewuser", newStories)
+  .post("http://coordinator-storytelling.herokuapp.com/createnewuser")
   .then(res=> {
     console.log("then", res)
     dispatch({type: CREATING_STORIES_SUCCESS, payload: res.data})
