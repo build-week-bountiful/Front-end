@@ -5,13 +5,13 @@ export const FETCHING_START = "FETCHING_START"
 export const FETCHING_SUCCESS = "FETCHING_SUCCESS"
 export const FETCHING_FAILED = "FETCHING_FAILED" 
 
-export const getStories = () => dispatch => {
+export const getStories = stories => dispatch => {
   dispatch({type: FETCHING_START})
     return axios
-    .get("http://coordinator-storytelling.herokuapp.com/stories/all")
-    // console.log()
+    .get("http://coordinator-storytelling.herokuapp.com/stories/all", stories)
+    // console.log("fetching data", success)
     .then(res => {
-      console.log("get", res)
+      console.log("get successful", res)
       dispatch({ type: FETCHING_SUCCESS, payload: res.data})
     })
 
@@ -26,8 +26,9 @@ export const CREATING_STORIES = "CREATING_STORIES"
 export const CREATING_STORIES_SUCCESS = "CREATING_STORIES_SUCCESS"
 export const CREATING_STORIES_FAILURE = "CREATING_STORIES_FAILURE"
 
-export const createStories = (newStories, title, country, description, date) => dispatch => {
+export const createStories = (newStories, storiesid, title, country, description, date) => dispatch => {
   dispatch({type: CREATING_STORIES, payload: {
+      storiesid,
       title,
       country,
       description,

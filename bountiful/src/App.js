@@ -1,16 +1,18 @@
 import React,{Component} from 'react';
-import './App.css';
+import './App.scss';
 import axios from "axios";
-import Home from "./components/Home";
-import Donors from "./components/Donors/Donor";
+import Home from "./components/Home/Home";
+// import Donors from "./components/Donors/Donor";
 import Coordinators from "./components/Coordinators/Coordinators";
-// import Stories from "./components/Stories/Stories";
+import Stories from "./components/Stories/Stories";
 // import StoriesForm from "./components/Stories/StoriesForm";
+// import StoriesList from "./components/Stories/StoriesList"
 import { 
   Container, 
   Row, 
   Col,
-
+  Nav,
+  NavItem,
 } from 'reactstrap';
 
 import {
@@ -50,14 +52,20 @@ class App extends Component {
          >
         <Row>
           <Col>
-              <div className="navLinks">
               <h1>Bountiful App</h1>
-                <Link to="/">Home</Link>
+              <Nav className="nav">
+                <NavItem className="navItem">                
+                  <Link to="/">Home</Link>
+                </NavItem>
+                <NavItem className="navItem"> 
                 <Link to="/donors">Donors</Link>
+                </NavItem>
+                <NavItem className="navItem"> 
                 <Link to="/coordinators">Coordinators</Link>
-              </div>
+                </NavItem>
+              </Nav>
               <Route path="/" exact render={(props) => <Home {...props} stories={stories} />}/>
-              <Route path="/donors" exact render={(props) => <Donors {...props} stories={stories} />}/>
+              <Route path="/donors" exact render={(props) => <Stories {...props} stories={Stories} />}/>
               <Route path="/coordinators" exact render={(props) => <Coordinators {...props} stories={stories} />}/>
               <div>
                 {/* <Stories/> */}
