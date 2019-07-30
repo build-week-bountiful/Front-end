@@ -14,7 +14,6 @@ import {
   Button
 
 } from 'reactstrap';
-
 import "./stories.scss";
 
 class Stories extends React.Component{
@@ -33,6 +32,11 @@ class Stories extends React.Component{
     }
   }
 
+removeStories = () => {
+  const stories = this.state.stories.filer(i=> i.id !== stories.id)
+  this.setState({stories})
+}
+
  componentDidMount(){
    fetch("http://coordinator-storytelling.herokuapp.com/stories/all")
    .then(res => res.json())
@@ -40,13 +44,13 @@ class Stories extends React.Component{
  }
 
   render(){
-    const {removeStories} = this.props;
+    const {removeStories} = this.state;
     // console.log(this.state)
     return(
         <Container className="storiesContainer">
         <h2>Stories</h2>
         <div>
-          {this.state.stories.map(stories=> {
+          {this.state.stories.map(stories => {
             return(
               <Card className="card">
               <CardBody>
@@ -58,8 +62,8 @@ class Stories extends React.Component{
                 <p><span className="bold">Date:</span> {stories.date}</p>
                 <p><span className="bold">Country:</span> {stories.country}</p>
                 <p><span className="bold">Description:</span> {stories.description}</p>
-                <p>{" "}<span onClick={this.handleInfo}><i className="fas fa-caret-square-down"></i></span></p>
-                {this.state.showInfo && <p><span className="bold">More Info:</span> {stories.content}</p>}
+                <p>{" "}<span onClick={this.handleInfo}><span className="bold">More Info:</span> <i className="fas fa-caret-square-down"></i></span></p>
+                {this.state.showInfo && <p>{stories.content}</p>}
               </CardText>
               <div className="storyBtns">
               <Button>Edit</Button>
@@ -74,7 +78,5 @@ class Stories extends React.Component{
     )
   }
 }
-
-
 
 export default Stories;
