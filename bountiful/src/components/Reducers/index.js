@@ -8,7 +8,7 @@
   } from "../Actions/index";
 
   const initialState = {
-    stores: [
+    stories: [
 
     ],
     fetchingStories: false,
@@ -28,7 +28,7 @@
           return{
             ...state,
             fetchingStories: false,
-            error: action.payload
+            stories: action.payload
           }
         case FETCHING_FAILED:
           return{

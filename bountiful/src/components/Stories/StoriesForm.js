@@ -108,3 +108,14 @@ const mapStateToProps = state => {
 }
 
 export default connect (mapStateToProps, {createStories})(StoriesForm);
+
+// const mapDispatchToProps = (state) => {
+//   return{
+//     stories: state.stories,
+//     fetchingStories: state.fetchingStories,
+//     error: state.error,
+//     addingStories: state.addingStories
+//   }
+// }
+ 
+// export default connect(null, mapDispatchToProps)(StoriesForm);

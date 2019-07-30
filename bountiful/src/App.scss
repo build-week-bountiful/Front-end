@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+  border: 1px solid red;
+
+  h1{
+    color: orange;
+  }
 }
 
 .App-logo {
@@ -21,6 +26,16 @@
 
 .App-link {
   color: #61dafb;
+}
+
+.nav{
+  padding: 1em 0 2em 0;
+}
+
+.navItem{
+  padding-right: 1em;
+
+  text-decoration: none;
 }
 
 @keyframes App-logo-spin {
