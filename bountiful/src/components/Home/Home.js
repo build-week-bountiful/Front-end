@@ -64,7 +64,7 @@ class Home extends Component{
             {/* sign up form code goes here */}
             <h3>Create Account</h3>
             <p>{errorMessage}</p>
-            <Form>
+            <Form onSubmit={this.createrUser}>
               <FormGroup>
                 <Input
                   type="username"

@@ -5,6 +5,9 @@
     CREATING_STORIES,
     CREATING_STORIES_SUCCESS,
     CREATING_STORIES_FAILURE,
+    LOGIN_START,
+    LOGIN_SUCCESS,
+    LOGIN_FAILED,
   } from "../Actions/index";
 
   const initialState = {
@@ -13,7 +16,9 @@
     ],
     fetchingStories: false,
     addingStories: false,
-    error: null
+    error: null,
+    isLoading: false,
+    errorMessage: null,
   }
 
   const rootReducer = (state = initialState, action) => {
@@ -53,7 +58,26 @@
             addingStories: false,
             error: action.payload
           }
-
+          case LOGIN_START: {
+            return {
+              ...state,
+              isLoading: true,
+            }
+          }
+          case LOGIN_SUCCESS: {
+            return {
+              ...state,
+              isLoading: false,
+              errorMessage: null,
+            }
+          }
+          case LOGIN_FAILED: {
+            return {
+              ...state,
+              isLoading: false,
+              errorMessage: action.payload.message,
+            }
+          }
           default: return state;
     }
   }
