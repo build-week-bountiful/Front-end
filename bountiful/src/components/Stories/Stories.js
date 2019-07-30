@@ -23,6 +23,13 @@ class Stories extends React.Component{
 
     this.state = {
       stories: [],
+      showInfo: false,
+    }
+
+    this.handleInfo = () => {
+      this.setState({
+        showInfo: !this.state.showInfo
+      });
     }
   }
 
@@ -33,14 +40,15 @@ class Stories extends React.Component{
  }
 
   render(){
-    console.log(this.state)
+    const {removeStories} = this.props;
+    // console.log(this.state)
     return(
         <Container className="storiesContainer">
         <h2>Stories</h2>
         <div>
           {this.state.stories.map(stories=> {
             return(
-              <Card>
+              <Card className="card">
               <CardBody>
               <CardTitle>
                 <p><span className="bold">Title:</span>{stories.title}</p>
@@ -50,11 +58,12 @@ class Stories extends React.Component{
                 <p><span className="bold">Date:</span> {stories.date}</p>
                 <p><span className="bold">Country:</span> {stories.country}</p>
                 <p><span className="bold">Description:</span> {stories.description}</p>
+                <p>{" "}<span onClick={this.handleInfo}><i className="fas fa-caret-square-down"></i></span></p>
+                {this.state.showInfo && <p><span className="bold">More Info:</span> {stories.content}</p>}
               </CardText>
               <div className="storyBtns">
-              <Button>Add</Button>
               <Button>Edit</Button>
-              <Button>Delete</Button>
+              <Button onClick={() => removeStories(stories.date)}>Delete</Button>
               </div>
               </CardBody>
               </Card>
